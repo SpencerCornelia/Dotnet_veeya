@@ -11,38 +11,15 @@ using Veeya.Persistence;
 namespace Veeya.Migrations
 {
     [DbContext(typeof(VeeyaDbContext))]
-    partial class VeeyaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170918130914_SeedDatabase")]
+    partial class SeedDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Veeya.Models.Investor", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Email_Address")
-                        .IsRequired();
-
-                    b.Property<string>("First_Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.Property<string>("Last_Name")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.Property<string>("Phone_Number")
-                        .IsRequired();
-
-                    b.HasKey("id");
-
-                    b.ToTable("Investors");
-                });
 
             modelBuilder.Entity("Veeya.Models.Property", b =>
                 {

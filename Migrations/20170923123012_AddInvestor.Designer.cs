@@ -11,9 +11,10 @@ using Veeya.Persistence;
 namespace Veeya.Migrations
 {
     [DbContext(typeof(VeeyaDbContext))]
-    partial class VeeyaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170923123012_AddInvestor")]
+    partial class AddInvestor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

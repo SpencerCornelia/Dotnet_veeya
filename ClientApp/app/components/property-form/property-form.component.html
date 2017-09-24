@@ -1,0 +1,168 @@
+<h1>Add Property</h1>
+
+<form>
+  <div class="form-group row">
+    <label for="addressName" class="col-sm-2 col-form-label">Address:</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="addressName" placeholder="Please Enter Address">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="city" class="col-sm-2 col-form-label">City:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputCity" placeholder="Please Enter City">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="state" class="col-sm-2 col-form-label">State:</label>
+    <div class="form-group col-md-4">
+      <select id="inputState" class="form-control">
+        <option name="state" id="alabama">Alabama</option>
+        <option name="state">Alaska</option>
+        <option name="state">Arizona</option>
+        <option name="state">Arkansas</option>
+        <option name="state">California</option>
+        <option name="state">Colorado</option>
+        <option name="state">Connecticut</option>
+        <option name="state">Delaware</option>
+        <option name="state">Florida</option>
+        <option name="state">Georgia</option>
+        <option name="state">Hawaii</option>
+        <option name="state">Idaho</option>
+        <option name="state">Illinois</option>
+        <option name="state">Indiana</option>
+        <option name="state">Iowa</option>
+        <option name="state">Kansas</option>
+        <option name="state">Kentucky</option>
+        <option name="state">Louisiana</option>
+        <option name="state">Maine</option>
+        <option name="state">Maryland</option>
+        <option name="state">Massachusetts</option>
+        <option name="state">Michigan</option>
+        <option name="state">Minnesota</option>
+        <option name="state">Mississippi</option>
+        <option name="state">Missouri</option>
+        <option name="state">Montana</option>
+        <option name="state">Nebraska</option>
+        <option name="state">Nevada</option>
+        <option name="state">New Hampshire</option>
+        <option name="state">New Jersey</option>
+        <option name="state">New Mexico</option>
+        <option name="state">New York</option>
+        <option name="state">North Carolina</option>
+        <option name="state">North Dakota</option>
+        <option name="state">Ohio</option>
+        <option name="state">Oklahoma</option>
+        <option name="state">Oregon</option>
+        <option name="state">Pennsylvania</option>
+        <option name="state">Rhode Island</option>
+        <option name="state">South Carolina</option>
+        <option name="state">South Dakota</option>
+        <option name="state">Tennessee</option>
+        <option name="state">Texas</option>
+        <option name="state">Utah</option>
+        <option name="state">Vermont</option>
+        <option name="state">Virginia</option>
+        <option name="state">Washington</option>
+        <option name="state">West Virginia</option>
+        <option name="state">Wisconsin</option>
+        <option name="state">Wyoming</option>
+      </select>
+    </div>
+  </div>    
+  <div class="form-group row">
+      <label for="state" class="col-sm-2 col-form-label">Zip Code:</label>
+      <div class="form-group col-md-4">
+        <input type="text" id="inputZip" class="form-control" placeholder="Zip Code">
+      </div>
+  </div> 
+  
+  <div class="form-group row">
+    <label for="purchasePrice" class="col-sm-2 col-form-label">Purchase Price:</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="purchasePrice" placeholder="Please Enter Purchase Price">
+    </div>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <p class="col-form-legend col-sm-2"><strong>Property Type:</strong></p>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="propType" id="singleFamilyType" value="" checked>
+            Single Family
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="propType" id="condoType" value="">
+            Condo
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="propType" id="duplexType" value="">
+            Duplex
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="propType" id="triplexType" value="">
+            Triplex
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="propType" id="fourplexType" value="">
+            Fourplex
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="propType" id="commercialType" value="">
+            Commercial
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group row">
+    <label for="bedrooms" class="col-sm-2 col-form-label">Number of Bedrooms:</label>
+    <div class="col-md-10">
+      <select class="bedroomsDropdown">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5+</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="bathrooms" class="col-sm-2 col-form-label">Number of Bathrooms:</label>
+    <div class="col-md-10">
+      <select class="bathroomsDropdown">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5+</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="addressName" class="col-sm-2 col-form-label">Under Contract:</label>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" id="contractCheckbox" type="checkbox"> I do have purchasing contract.
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Add Property</button>
+    </div>
+  </div>
+</form>

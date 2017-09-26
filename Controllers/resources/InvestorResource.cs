@@ -16,11 +16,11 @@ namespace Veeya.Controllers.Resources
        
         public string Phone_Number { get; set; }
 
-        public ICollection<Wholesaler> Wholesalers { get; set; }
+        public ICollection<WholesalerResource> Wholesalers { get; set; }
 
         public InvestorResource()
         {
-            Wholesalers = new Collection<Wholesaler>();
+            Wholesalers = new Collection<WholesalerResource>();
         }
     }
 }

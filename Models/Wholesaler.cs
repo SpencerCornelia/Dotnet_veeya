@@ -15,9 +15,12 @@ namespace Veeya.Models
         
         public ICollection<Property> Properties { get; set; }
 
+        public ICollection<Investor> Investors { get; set; }
+
         public Wholesaler() 
         {
             Properties = new Collection<Property>();
+            Investors = new Collection<Investor>();
         }
     }
 }

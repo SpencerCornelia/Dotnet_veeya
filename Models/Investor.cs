@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -25,5 +27,13 @@ namespace Veeya.Models
         [Required]
         [Phone]
         public string Phone_Number { get; set; }
+
+        public ICollection<Wholesaler> Wholesalers { get; set; }
+
+        public Investor()
+        {
+            Wholesalers = new Collection<Wholesaler>();
+        }
+
     }
 }

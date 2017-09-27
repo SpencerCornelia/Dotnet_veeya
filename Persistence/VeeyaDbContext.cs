@@ -12,5 +12,21 @@ namespace Veeya.Persistence
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<InvestorToWholesaler>()
+                .HasKey(t => new { t.InvestorId, t.WholesalerId });
+
+            modelBuilder.Entity<InvestorToWholesaler>()
+                .HasOne(pt => pt.Investor)
+                .WithMany(p => p.InvestorToWholesalers)
+                .HasForeignKey(pt => pt.InvestorId);
+
+            modelBuilder.Entity<InvestorToWholesaler>()
+                .HasOne(pt => pt.Wholesaler)
+                .WithMany(p => p.InvestorToWholesalers)
+                .HasForeignKey(pt => pt.WholesalerId);
+        }
     }
 }

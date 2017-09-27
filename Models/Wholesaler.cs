@@ -5,9 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Veeya.Models
 {
+    [Table("Wholesalers")]
     public class Wholesaler
     {
         public int WholesalerId { get; set; }
+        public List<InvestorToWholesaler> InvestorToWholesalers { get; set; }
 
         [Required]
         [StringLength(255)]

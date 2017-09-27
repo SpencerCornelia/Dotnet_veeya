@@ -9,6 +9,7 @@ namespace Veeya.Models
     public class Investor
     {
         public int InvestorId { get; set; }
+        public List<InvestorToWholesaler> InvestorToWholesalers { get; set; }
         
         [Required]
         [StringLength(255)] 

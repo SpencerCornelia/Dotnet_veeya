@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Veeya.Models
 {
-    //[Table("Properties")]
+    [Table("Properties")]
     public class Property
     {
         public int PropertyId { get; set; }

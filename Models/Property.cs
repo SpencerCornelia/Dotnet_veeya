@@ -8,7 +8,7 @@ namespace Veeya.Models
     //[Table("Properties")]
     public class Property
     {
-        public int Id { get; set; }
+        public int PropertyId { get; set; }
 
         [Required]
         [StringLength(255)]

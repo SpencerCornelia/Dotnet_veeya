@@ -6,7 +6,7 @@ namespace Veeya.Controllers.Resources
 {
     public class PropertyResource
     {
-        public int Id { get; set; }
+        public int PropertyId { get; set; }
         public string AddressName { get; set; }
         public string WholesalerId { get; set; }
       

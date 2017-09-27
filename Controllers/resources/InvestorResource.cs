@@ -6,7 +6,7 @@ namespace Veeya.Controllers.Resources
 {
     public class InvestorResource
     {
-        public int id { get; set; }
+        public int InvestorId { get; set; }
         
         public string First_Name { get; set; }
 

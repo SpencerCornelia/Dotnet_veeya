@@ -8,9 +8,7 @@ namespace Veeya.Models
     [Table("Investors")]
     public class Investor
     {
-        // need to go back through the tutorial for moving Models to Controllers/Resources
-        // enter into MappingProfile.cs as well
-        public int id { get; set; }
+        public int InvestorId { get; set; }
         
         [Required]
         [StringLength(255)] 

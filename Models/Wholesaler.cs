@@ -7,7 +7,7 @@ namespace Veeya.Models
 {
     public class Wholesaler
     {
-        public int id { get; set; }
+        public int WholesalerId { get; set; }
 
         [Required]
         [StringLength(255)]

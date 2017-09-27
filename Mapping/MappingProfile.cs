@@ -11,6 +11,7 @@ namespace Veeya.Mapping
             CreateMap<Wholesaler, WholesalerResource>();
             CreateMap<Property, PropertyResource>();
             CreateMap<Investor, InvestorResource>();
+            CreateMap<InvestorToWholesaler, InvestorToWholesalerResource>();
         }
     }
 }

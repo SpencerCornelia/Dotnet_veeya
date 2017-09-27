@@ -1,14 +1,12 @@
-using System.ComponentModel.DataAnnotations.Schema;
+using Veeya.Models;
 
-namespace Veeya.Models
+namespace Veeya.Controllers.Resources
 {
-    [Table("InvestorToWholesalers")]
-    public class InvestorToWholesaler
+    public class InvestorToWholesalerResource
     {
         public int InvestorId { get; set; }
         public Investor Investor { get; set; }
         public int WholesalerId { get; set; }
         public Wholesaler Wholesaler { get; set; }
-
     }
 }

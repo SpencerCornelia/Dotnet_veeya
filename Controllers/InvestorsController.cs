@@ -23,7 +23,7 @@ namespace Veeya.Controllers
         [HttpGet("/api/investors")]
         public async Task<IEnumerable<InvestorResource>> GetInvestors()
         {
-            var investors = await context.Investors.Include(i => i.WholesalersId).ToListAsync();
+            var investors = await context.Investors.Include(i => i.Wholesalers).ToListAsync();
             return Mapper.Map<List<Investor>, List<InvestorResource>>(investors);
         }
     }

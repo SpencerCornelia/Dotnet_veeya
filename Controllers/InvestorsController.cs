@@ -1,5 +1,10 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Veeya.Controllers.Resources;
+using Veeya.Models;
 using Veeya.Persistence;
 
 namespace Veeya.Controllers
@@ -13,6 +18,13 @@ namespace Veeya.Controllers
         {
             this.context = context;
             this.mapper = mapper;
+        }
+
+        [HttpGet("/api/investors")]
+        public async Task<IEnumerable<InvestorResource>> GetInvestors()
+        {
+            var investors = await context.Investors.Include(i => i.Wholesalers).ToListAsync();
+            return Mapper.Map<List<Investor>, List<InvestorResource>>(investors);
         }
     }
 }

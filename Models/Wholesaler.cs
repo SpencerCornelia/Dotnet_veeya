@@ -9,7 +9,9 @@ namespace Veeya.Models
     public class Wholesaler
     {
         public int WholesalerId { get; set; }
-        public List<InvestorToWholesaler> InvestorToWholesalers { get; set; }
+        
+        // here
+        public virtual List<InvestorToWholesaler> InvestorToWholesalers { get; set; }
 
         [Required]
         [StringLength(255)]
@@ -17,12 +19,12 @@ namespace Veeya.Models
         
         public ICollection<Property> Properties { get; set; }
 
-        public ICollection<Investor> Investors { get; set; }
+        public ICollection<InvestorToWholesaler> Investors { get; } = new List<InvestorToWholesaler>();
 
         public Wholesaler() 
         {
             Properties = new Collection<Property>();
-            Investors = new Collection<Investor>();
+            Investors = new Collection<InvestorToWholesaler>();
         }
     }
 }

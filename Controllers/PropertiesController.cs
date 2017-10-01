@@ -13,17 +13,21 @@ namespace Veeya.Controllers
     [Route("/api/properties")]
     public class PropertiesController : Controller
     {
-        [HttpPost]
-        public IActionResult CreateProperty([FromBody] Property property)
-        {
-            return Ok(property);
-        }
 
         private readonly VeeyaDbContext context;
-        public PropertiesController(VeeyaDbContext context)
+        private readonly IMapper mapper;
+
+        public PropertiesController(VeeyaDbContext context, IMapper mapper)
         {
             this.context = context;
+            this.mapper = mapper;
+        }
 
+        [HttpPost]
+        public IActionResult CreateProperty([FromBody] PropertyResource propertyResource)
+        {
+            var property = Mapper.Map<PropertyResource, Property>(propertyResource);
+            return Ok(property);
         }
 
         [HttpGet]

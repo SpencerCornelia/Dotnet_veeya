@@ -15,7 +15,7 @@ namespace Veeya.Models
         public string AddressName { get; set; }
 
         public Wholesaler Wholesaler { get; set; }
-
+        [Required]
         public int WholesalerId { get; set;}
         
     }

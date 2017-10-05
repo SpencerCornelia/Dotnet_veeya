@@ -13,12 +13,17 @@ namespace Veeya.Controllers
     [Route("/api/properties")]
     public class PropertiesController : Controller
     {
-
+        // delete context when listOfProperties is sent to PropertyRepository.cs
+        // and remove from constructor too
         private readonly VeeyaDbContext context;
         private readonly IMapper mapper;
+        private readonly IPropertyRepository repository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public PropertiesController(VeeyaDbContext context, IMapper mapper)
+        public PropertiesController(VeeyaDbContext context, IMapper mapper, IPropertyRepository repository, IUnitOfWork unitOfWork)
         {
+            this.unitOfWork = unitOfWork;
+            this.repository = repository;
             this.context = context;
             this.mapper = mapper;
         }
@@ -26,25 +31,25 @@ namespace Veeya.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProperty([FromBody] SavePropertyResource propertyResource)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             var property = Mapper.Map<SavePropertyResource, Property>(propertyResource);
-            context.Properties.Add(property);
-            await context.SaveChangesAsync();
+            repository.Add(property);
+            await unitOfWork.CompleteAsync();
             return Ok(property);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProperty(int id)
         {
-            var property = await context.Properties.FindAsync(id);
+            var property = await repository.GetProperty(id);
 
             if (property == null)
             {
                 return NotFound();
-            } 
+            }
 
             var propertyResource = Mapper.Map<Property, PropertyResource>(property);
             return Ok(propertyResource);
@@ -53,40 +58,44 @@ namespace Veeya.Controllers
         [HttpGet("list")]
         public async Task<IEnumerable<SavePropertyResource>> GetListOfProperties(int id)
         {
+            // add this to PropertyRepository.cs at later time. This isn't part of Mosh's tutorial
             var listOfProperties = await context.Properties.Include(m => m.Wholesaler).ToListAsync();
 
             return Mapper.Map<List<Property>, List<SavePropertyResource>>(listOfProperties);
-        }        
+        }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProperty(int id, [FromBody] SavePropertyResource propertyResource)
         {
-            var property = await context.Properties.FindAsync(id);
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            if (property == null) 
+
+            var property = await repository.GetProperty(id);
+            
+            if (property == null)
             {
                 return NotFound();
             }
-            
             Mapper.Map<SavePropertyResource, Property>(propertyResource, property);
-            
-            await context.SaveChangesAsync();
-            return Ok(property);
+            await unitOfWork.CompleteAsync();
+
+            property = await repository.GetProperty(property.PropertyId);
+            var result = Mapper.Map<Property, PropertyResource>(property);
+            return Ok(result);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProperty(int id)
         {
-            var property = await context.Properties.FindAsync(id);
-            
-            if (property == null) 
+            var property = await repository.GetProperty(id, includeRelated: false);
+
+            if (property == null)
             {
                 return NotFound();
             }
-            context.Remove(property);
-            await context.SaveChangesAsync();
+            repository.Remove(property);
+            await unitOfWork.CompleteAsync();
 
             return Ok(id);
         }

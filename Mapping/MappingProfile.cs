@@ -9,14 +9,15 @@ namespace Veeya.Mapping
         public MappingProfile()
         {
             CreateMap<Wholesaler, WholesalerResource>();
-            CreateMap<Property, PropertyResource>();
+            CreateMap<Property, SavePropertyResource>();
             CreateMap<Investor, InvestorResource>();
             CreateMap<InvestorToWholesaler, InvestorToWholesalerResource>();
+            CreateMap<Property, PropertyResource>();
 
             // used for posting to /api/properties. need to convert propertyResource
             // back to Property. add additional Property properties here when the time
             // comes (city, state, zip, etc.)
-            CreateMap<PropertyResource, Property>()
+            CreateMap<SavePropertyResource, Property>()
                 .ForMember(p => p.PropertyId, opt => opt.Ignore())
                 .ForMember(p => p.AddressName, opt => opt.MapFrom(pr => pr.AddressName))
                 .ForMember(p => p.WholesalerId, opt => opt.MapFrom(pr => pr.WholesalerId))

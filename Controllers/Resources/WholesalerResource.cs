@@ -11,11 +11,11 @@ namespace Veeya.Controllers.Resources
         [StringLength(255)]        
         public string First_Name { get; set; }
         
-        public ICollection<PropertyResource> Properties { get; set; }
+        public ICollection<SavePropertyResource> Properties { get; set; }
 
         public WholesalerResource() 
         {
-            Properties = new Collection<PropertyResource>();
+            Properties = new Collection<SavePropertyResource>();
         }
     }
 }

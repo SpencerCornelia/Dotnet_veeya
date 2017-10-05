@@ -24,13 +24,13 @@ namespace Veeya.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProperty([FromBody] PropertyResource propertyResource)
+        public async Task<IActionResult> CreateProperty([FromBody] SavePropertyResource propertyResource)
         {
             if (!ModelState.IsValid) 
             {
                 return BadRequest(ModelState);
             }
-            var property = Mapper.Map<PropertyResource, Property>(propertyResource);
+            var property = Mapper.Map<SavePropertyResource, Property>(propertyResource);
             context.Properties.Add(property);
             await context.SaveChangesAsync();
             return Ok(property);
@@ -51,15 +51,15 @@ namespace Veeya.Controllers
         }
 
         [HttpGet("list")]
-        public async Task<IEnumerable<PropertyResource>> GetListOfProperties(int id)
+        public async Task<IEnumerable<SavePropertyResource>> GetListOfProperties(int id)
         {
             var listOfProperties = await context.Properties.Include(m => m.Wholesaler).ToListAsync();
 
-            return Mapper.Map<List<Property>, List<PropertyResource>>(listOfProperties);
+            return Mapper.Map<List<Property>, List<SavePropertyResource>>(listOfProperties);
         }        
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProperty(int id, [FromBody] PropertyResource propertyResource)
+        public async Task<IActionResult> UpdateProperty(int id, [FromBody] SavePropertyResource propertyResource)
         {
             var property = await context.Properties.FindAsync(id);
             if (!ModelState.IsValid) 
@@ -69,9 +69,9 @@ namespace Veeya.Controllers
             if (property == null) 
             {
                 return NotFound();
-            }            
+            }
             
-            Mapper.Map<PropertyResource, Property>(propertyResource, property);
+            Mapper.Map<SavePropertyResource, Property>(propertyResource, property);
             
             await context.SaveChangesAsync();
             return Ok(property);

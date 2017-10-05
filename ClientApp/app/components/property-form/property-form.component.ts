@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//import { Property } from '../../../../Models/Property';
 
 @Component({
   selector: 'app-property-form',

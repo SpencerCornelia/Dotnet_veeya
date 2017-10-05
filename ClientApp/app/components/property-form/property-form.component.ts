@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { Property } from '../../../../Models/Property';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-property-form',
@@ -8,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PropertyFormComponent implements OnInit {
 
-  constructor() { }
+  property: any = {
 
+  };
+
+  constructor(private _httpService: Http) { }
+
+  properties: string[] = [];
   ngOnInit() {
+    this._httpService.get("/api/properties").subscribe(properties => {
+      this.properties = properties.json() as string[];
+    })
   }
 
 }

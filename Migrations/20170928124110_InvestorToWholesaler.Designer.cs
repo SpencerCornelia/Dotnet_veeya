@@ -11,9 +11,10 @@ using Veeya.Persistence;
 namespace Veeya.Migrations
 {
     [DbContext(typeof(VeeyaDbContext))]
-    partial class VeeyaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170928124110_InvestorToWholesaler")]
+    partial class InvestorToWholesaler
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,36 +75,7 @@ namespace Veeya.Migrations
                         .IsRequired()
                         .HasMaxLength(255);
 
-                    b.Property<int>("AfterRepairValue");
-
-                    b.Property<int>("AverageRent");
-
-                    b.Property<int>("Bathrooms");
-
-                    b.Property<int>("Bedrooms");
-
-                    b.Property<string>("City")
-                        .IsRequired();
-
-                    b.Property<string>("PropertyType")
-                        .IsRequired();
-
-                    b.Property<int>("PurchasePrice");
-
-                    b.Property<int>("RehabCostMax");
-
-                    b.Property<int>("RehabCostMin");
-
-                    b.Property<int>("SquareFootage");
-
-                    b.Property<string>("State")
-                        .IsRequired();
-
                     b.Property<int>("WholesalerId");
-
-                    b.Property<int>("YearBuilt");
-
-                    b.Property<int>("ZipCode");
 
                     b.HasKey("PropertyId");
 
